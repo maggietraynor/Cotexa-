@@ -7,15 +7,16 @@ import clientesRoutes from './routes/clientes'
 import dashboardRoutes from './routes/dashboard'
 import camposRoutes from './routes/campos'
 import notificacionesRoutes from './routes/notificaciones'
+import webhookRoutes from './routes/webhook'
 
 dotenv.config()
-
 const app = express()
 const PORT = process.env.PORT || 3001
 
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json())
 
+app.use('/api', webhookRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/pedidos', pedidosRoutes)
 app.use('/api/clientes', clientesRoutes)
